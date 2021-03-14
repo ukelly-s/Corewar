@@ -78,9 +78,10 @@ int			main(int ac, char **av)
 		print_usage();
 		return (0);
 	}
-	logger_switch_flags(L_STD_CFG, L_DISABLE);
+//	logger_switch_flags(L_STD_CFG, L_DISABLE);
 	logger_switch_flags(L_USE_STDOUT, L_ENABLE);
 	logger_set_log_lvl(ERROR);
+	logger_set_app_log_lvl(L_STDOUT, ALL);
 	ft_bzero(&g_vm, sizeof(t_vm));
 	if (!vm_options(ac, av))
 		ft_exit(EXIT_FAILURE, "Resolving arguments failed");
