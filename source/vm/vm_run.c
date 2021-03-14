@@ -90,5 +90,5 @@ int			main(int ac, char **av)
 	if (!vm_load_champions(ac, av))
 		ft_exit(EXIT_FAILURE, "Loading champions failed");
 	vm_run();
-	ft_exit(0, "Success");
+	ft_exit(EXIT_SUCCESS, "Success");
 }

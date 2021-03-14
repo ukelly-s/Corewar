@@ -32,7 +32,7 @@ void				op_lldi(t_cursor *cursor)
 	int32_t			value;
 	intptr_t		addr;
 
-	addr = vm_trunc(cursor->pc + arg_0 + arg_1);
+	addr = cursor->pc + arg_0 + arg_1;
 	value = vm_load_mem(addr, REG_SIZE);
 	cursor->carry = !value;
 	cursor->reg[reg_2_id] = value;

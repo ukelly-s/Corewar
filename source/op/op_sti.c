@@ -33,7 +33,7 @@ void				op_sti(t_cursor *cursor)
 	intptr_t		addr;
 
 	res = arg_1 + arg_2;
-	addr = vm_trunc(cursor->pc + res % IDX_MOD);
+	addr = cursor->pc + res % IDX_MOD;
 	vm_store_mem(arg_0, addr, REG_SIZE);
 	vm_mark_mem(cursor->mark, addr, REG_SIZE);
 	log_debug(__func__, "Cursor %d: exec 'sti': %s -> %s + %s = %d (%P)",

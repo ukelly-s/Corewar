@@ -32,7 +32,7 @@ void				op_ldi(t_cursor *cursor)
 	int32_t			value;
 	intptr_t		addr;
 
-	addr = vm_trunc(cursor->pc + (arg_0 + arg_1) % IDX_MOD);
+	addr = cursor->pc + (arg_0 + arg_1) % IDX_MOD;
 	value = vm_load_mem(addr, REG_SIZE);
 	cursor->reg[reg_2_id] = value;
 	log_debug(__func__, "Cursor %d: exec 'ldi': %s + %s = %d (%P) -> r%d",
