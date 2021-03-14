@@ -17,17 +17,21 @@
 #include "mem.h"
 #include "str.h"
 
-int	ft_mkdir(const char *path)
-{
 #ifdef WIN32
 
+int	ft_mkdir(const char *path)
+{
 	return (mkdir(path));
+}
+
 #else
 
+int	ft_mkdir(const char *path)
+{
 	return (mkdir(path, S_IRWXU));
-#endif
-
 }
+
+#endif
 
 int	ft_mkpath(const char *path)
 {
