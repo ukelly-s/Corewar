@@ -21,7 +21,7 @@ inline static void	op_verbose(t_cursor *cursor, int32_t arg_0, int32_t arg_1,
 	ft_printf("P %4d | ldi %d %d r%d\n", cursor->id, arg_0, arg_1,
 		cursor->args[2]);
 	ft_printf("       | -> load from %d + %d = %d (with pc and mod %lld)\n",
-		arg_0, arg_1, arg_0 + arg_1, cursor->pc + addr);
+		arg_0, arg_1, arg_0 + arg_1, addr);
 }
 
 void				op_ldi(t_cursor *cursor)

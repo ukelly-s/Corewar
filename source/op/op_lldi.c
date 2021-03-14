@@ -38,5 +38,5 @@ void				op_lldi(t_cursor *cursor)
 	log_debug(__func__, "Cursor %d: exec 'lldi': %s + %s = %d (%P) -> r%d",
 		cursor->id, g_arg_log[0], g_arg_log[1], value, addr, reg_2_id);
 	if (g_vm.config & VM_VERBOSE_OP)
-		op_verbose(cursor, arg_0, arg_1, value);
+		op_verbose(cursor, arg_0, arg_1, addr);
 }
