@@ -21,7 +21,7 @@ inline static void	op_verbose(t_cursor *cursor, int32_t arg_0, int32_t arg_1,
 	ft_printf("P %4d | ldi %d %d r%d\n", cursor->id, arg_0, arg_1,
 		cursor->args[2]);
 	ft_printf("       | -> load from %d + %d = %d (with pc and mod %lld)\n",
-		arg_0, arg_1, arg_0 + arg_1, addr);
+		arg_0, arg_1, arg_0 + arg_1, cursor->pc + addr);
 }
 
 void				op_ldi(t_cursor *cursor)
@@ -38,5 +38,5 @@ void				op_ldi(t_cursor *cursor)
 	log_debug(__func__, "Cursor %d: exec 'ldi': %s + %s = %d (%P) -> r%d",
 		cursor->id, g_arg_log[0], g_arg_log[1], value, addr, reg_2_id);
 	if (g_vm.config & VM_VERBOSE_OP)
-		op_verbose(cursor, arg_0, arg_1, value);
+		op_verbose(cursor, arg_0, arg_1, addr);
 }
