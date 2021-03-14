@@ -104,7 +104,7 @@ static void	fetch_args(t_cursor *cursor)
 		else if (cursor->args_types[i] == T_DIR)
 			arg_len = cursor->op->dir_size;
 		else
-			break ;
+			continue ;
 		cursor->args[i] = vm_load_mem(cursor->pc + cursor->step, arg_len);
 		cursor->args_pc[i] = cursor->pc;
 		log_trace(__func__, "Cursor %d: fetched %dth arg: %d",
