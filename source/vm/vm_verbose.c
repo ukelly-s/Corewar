@@ -34,5 +34,5 @@ void	verbose_cursor_death(t_cursor *cursor)
 
 void	verbose_cycles_to_die(void)
 {
-	ft_printf("Cycle to die is now %zd\n", g_vm.cycles_to_die);
+	ft_printf("Cycle to die is now %d\n", g_vm.cycles_to_die);
 }
