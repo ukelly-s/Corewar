@@ -34,6 +34,7 @@ void				op_lldi(t_cursor *cursor)
 
 	addr = vm_trunc(cursor->pc + arg_0 + arg_1);
 	value = vm_load_mem(addr, REG_SIZE);
+	cursor->carry = !value;
 	cursor->reg[reg_2_id] = value;
 	log_debug(__func__, "Cursor %d: exec 'lldi': %s + %s = %d (%P) -> r%d",
 		cursor->id, g_arg_log[0], g_arg_log[1], value, addr, reg_2_id);
