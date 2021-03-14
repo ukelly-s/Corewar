@@ -10,8 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <ft_printf.h>
-#include <stdio.h>
 #include "io_.h"
 #include "str.h"
 #include "conv.h"
@@ -59,6 +57,7 @@ static void	vm_run(void)
 	log_info(__func__, "Run Corewar Virtual Machine");
 	vm_cursor_set_initial();
 	print_intro();
+	g_vm.cycles_to_die = CYCLE_TO_DIE;
 	while (g_vm.cursors->size)
 	{
 		if (g_vm.config & VM_DUMP && g_vm.dump_cycle == g_vm.cycles)
@@ -69,6 +68,7 @@ static void	vm_run(void)
 			vm_check();
 	}
 	print_winner();
+	log_info(__func__, "Stop Corewar Virtual Machine");
 }
 
 int			main(int ac, char **av)
@@ -79,15 +79,15 @@ int			main(int ac, char **av)
 		return (0);
 	}
 	logger_switch_flags(L_STD_CFG, L_DISABLE);
-	logger_switch_flags(L_USE_STDERR, L_ENABLE);
-	logger_set_app_log_lvl(L_STDERR, TRACE);
+	logger_switch_flags(L_USE_STDOUT, L_ENABLE);
+	logger_set_log_lvl(ERROR);
 	ft_bzero(&g_vm, sizeof(t_vm));
 	if (!vm_options(ac, av))
 		ft_exit(EXIT_FAILURE, "Resolving arguments failed");
+	if (g_vm.champ_size == 0)
+		ft_exit(EXIT_FAILURE, "No champions");
 	if (!vm_load_champions(ac, av))
 		ft_exit(EXIT_FAILURE, "Loading champions failed");
-	g_vm.cycles_to_die = CYCLE_TO_DIE;
 	vm_run();
-	log_info(__func__, "Stop Corewar Virtual Machine");
 	ft_exit(0, "Success");
 }
