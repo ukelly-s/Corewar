@@ -45,8 +45,10 @@ t_vm					g_vm;
 
 int			vm_options(int ac, char **av);
 int			vm_options_logger(int ac, char **av);
+
 int			vm_load_champions(int ac, char **av);
 int			vm_read_champion(t_champ *champ, const char *path);
+
 t_cursor	*vm_cursor_new(intptr_t pc);
 void		vm_cursor_set_initial(void);
 void		vm_cursor_move(t_cursor *cursor);

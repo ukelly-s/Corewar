@@ -38,7 +38,6 @@ typedef struct			s_cursor
 	t_op				*op;
 	intptr_t			pc;
 	intptr_t			step;
-	intptr_t			args_pc[3];
 	t_byte				args_types[3];
 	int32_t				args[3];
 	int32_t				reg[REG_NUMBER + 1];

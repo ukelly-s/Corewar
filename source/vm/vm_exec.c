@@ -106,7 +106,6 @@ static void	fetch_args(t_cursor *cursor)
 		else
 			continue ;
 		cursor->args[i] = vm_load_mem(cursor->pc + cursor->step, arg_len);
-		cursor->args_pc[i] = cursor->pc;
 		log_trace(__func__, "Cursor %d: fetched %dth arg: %d",
 			cursor->id, i + 1, cursor->args[i]);
 		cursor->step += arg_len;

@@ -14,6 +14,15 @@
 #include "system.h"
 #include "vm.h"
 
+intptr_t	vm_trunc(intptr_t addr)
+{
+	if (addr >= MEM_SIZE || addr <= -MEM_SIZE)
+		addr %= MEM_SIZE;
+	if (addr < 0)
+		addr += MEM_SIZE;
+	return (addr);
+}
+
 char		*vm_show_mem(intptr_t addr, char *buf, size_t size)
 {
 	register char	*ptr;
@@ -31,15 +40,6 @@ char		*vm_show_mem(intptr_t addr, char *buf, size_t size)
 	}
 	*ptr = '\0';
 	return (buf);
-}
-
-intptr_t	vm_trunc(intptr_t addr)
-{
-	if (addr >= MEM_SIZE || addr <= -MEM_SIZE)
-		addr %= MEM_SIZE;
-	if (addr < 0)
-		addr += MEM_SIZE;
-	return (addr);
 }
 
 void		vm_store_mem(int32_t val, intptr_t addr, size_t size)
