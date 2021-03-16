@@ -130,7 +130,7 @@ int				vm_load_champions(int ac, char **av)
 	i = 0;
 	while (++i < ac)
 	{
-		if (ft_strequ(av[i], "-n"))
+		if (ft_strequ(av[i], "-n") || ft_strequ(av[i], "-number"))
 			str_id = av[++i];
 		else if (ft_strend(av[i], COR_EXT))
 		{

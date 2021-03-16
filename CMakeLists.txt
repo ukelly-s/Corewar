@@ -158,7 +158,6 @@ add_executable(corewar $<TARGET_OBJECTS:libft>
 		source/vm/vm_cursor.c
 		source/vm/vm_exec.c
 		source/vm/vm_memory_access.c
-		source/vm/vm_verbose.c
 		source/vm/vm_check.c
 		source/op/op_live.c
 		source/op/op_ld.c

@@ -10,6 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "ft_printf.h"
 #include "vm.h"
 
 static inline int	is_alive(t_cursor *cursor)
@@ -24,25 +25,26 @@ static void			purge_dead_cursors(void)
 	register size_t			i;
 	register t_list_node	*node;
 	t_list					*cursors;
-	t_cursor				*cursor;
+	t_cursor				*cur;
 
 	cursors = g_vm.cursors;
 	i = 0;
 	node = cursors->front;
 	while (i < cursors->size)
 	{
-		cursor = (t_cursor *)node->data;
+		cur = (t_cursor *)node->data;
 		node = node->next;
-		if (is_alive(cursor))
+		if (is_alive(cur))
 			i++;
 		else
 		{
 			log_debug(__func__, "Cursor %d: is died after %d cycles",
-				cursor->id, g_vm.cycles - cursor->live_cycle);
+				cur->id, g_vm.cycles - cur->live_cycle);
 			if (g_vm.config & VM_VERBOSE_DEATH)
-				verbose_cursor_death(cursor);
+				ft_printf("Process %d hasn't lived for %d cycles (CTD %d)\n",
+					cur->id, g_vm.cycles - cur->live_cycle, g_vm.cycles_to_die);
 			list_pop(cursors, i);
-			free(cursor);
+			free(cur);
 		}
 	}
 }
@@ -58,7 +60,7 @@ void				vm_check(void)
 		g_vm.cycles_to_die -= CYCLE_DELTA;
 		log_debug(__func__, "Cycles to die is now %d\n", g_vm.cycles_to_die);
 		if (g_vm.config & VM_VERBOSE_CYCLE)
-			verbose_cycles_to_die();
+			ft_printf("Cycle to die is now %d\n", g_vm.cycles_to_die);
 		g_vm.checks_nbr = 0;
 	}
 	g_vm.lives_nbr = 0;

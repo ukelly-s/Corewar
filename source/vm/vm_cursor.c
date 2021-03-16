@@ -10,6 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "ft_printf.h"
 #include "util.h"
 #include "error.h"
 #include "vm.h"
@@ -30,7 +31,7 @@ t_cursor	*vm_cursor_new(intptr_t pc)
 
 void		vm_cursor_move(t_cursor *cursor)
 {
-	char			buf[SHOW_MEM_MAX * 3 + 1];
+	char			mem_image[SHOW_MEM_MAX * 3 + 1];
 	const intptr_t	old_pc = cursor->pc;
 	const intptr_t	step = cursor->step;
 
@@ -40,11 +41,12 @@ void		vm_cursor_move(t_cursor *cursor)
 	cursor->pc = vm_trunc(old_pc + step);
 	if (cursor->op->code)
 	{
+		vm_show_mem(old_pc, mem_image, step);
 		log_debug(__func__, "Cursor %d: move PC by %zu bytes (%P >>> %P) %s",
-			cursor->id, step, old_pc, cursor->pc,
-			vm_show_mem(old_pc, buf, step));
+			cursor->id, step, old_pc, cursor->pc, mem_image);
 		if (g_vm.config & VM_VERBOSE_MOVE)
-			verbose_move_pc(old_pc, step);
+			ft_printf("ADV %d (%0.4p -> %0.4p) %s\n", step, old_pc,
+				old_pc + step, mem_image);
 	}
 	else
 		log_trace(__func__, "Cursor %d: move PC by 1 byte", cursor->id);

@@ -66,9 +66,4 @@ void		print_arena(void);
 void		print_winner(void);
 void		print_usage(void);
 
-void		verbose_move_pc(intptr_t pc, intptr_t step);
-void		verbose_cycle(void);
-void		verbose_cycles_to_die(void);
-void		verbose_cursor_death(t_cursor *cursor);
-
 #endif

@@ -49,7 +49,7 @@ void		vm_options_logger(int ac, char **av)
 			logger_switch_flags(L_USE_COLORS, L_ENABLE);
 		else if (ft_strequ(av[i], "prefix"))
 			logger_switch_flags(L_SHOW_PREFIX | L_SHOW_TIME | L_SHOW_FUNC,
-								L_ENABLE);
+				L_ENABLE);
 		else if (ft_strequ(av[i], "file"))
 			if (i + 1 >= ac || is_log_level(av[i + 1]))
 				logger_add_app("app", NULL, ALL);

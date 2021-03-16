@@ -10,6 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "ft_printf.h"
 #include "io_.h"
 #include "str.h"
 #include "conv.h"
@@ -43,7 +44,7 @@ static void	vm_cycle(void)
 	g_vm.cycles_after_check++;
 	log_info(__func__, "_______ Cycle %d _______", g_vm.cycles);
 	if (g_vm.config & VM_VERBOSE_CYCLE)
-		verbose_cycle();
+		ft_printf("It is now cycle %d\n", g_vm.cycles);
 	node = g_vm.cursors->front;
 	while (node)
 	{

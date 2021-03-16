@@ -36,10 +36,10 @@ static int	option_dump(int *i, int ac, char **av)
 		else
 			g_vm.dump_byteness = DUMP_BYTENESS;
 		log_info(__func__, "Dump after %d cycles, %d octets per line",
-				g_vm.dump_cycle, g_vm.dump_byteness);
+			g_vm.dump_cycle, g_vm.dump_byteness);
 		return (1);
 	}
-	log_error(__func__, "Incorrect use of the option 'dump' or 'step'");
+	log_error(__func__, "Incorrect use of the options 'dump' or 'step'");
 	return (0);
 }
 
@@ -96,7 +96,7 @@ static int	option_other(char *av)
 
 int			vm_options(int ac, char **av)
 {
-	int	ok;
+	int	status;
 	int	i;
 
 	i = 0;
@@ -105,14 +105,14 @@ int			vm_options(int ac, char **av)
 	{
 		if (ft_strequ(av[i], "-d") || ft_strequ(av[i], "-s")
 			|| ft_strequ(av[i], "-dump") || ft_strequ(av[i], "-step"))
-			ok = option_dump(&i, ac, av);
+			status = option_dump(&i, ac, av);
 		else if (ft_strequ(av[i], "-v") || ft_strequ(av[i], "-verbose"))
-			ok = option_verbose(&i, ac, av);
+			status = option_verbose(&i, ac, av);
 		else if (ft_strequ(av[i], "-n") || ft_strequ(av[i], "-number"))
-			ok = option_n(&i, ac, av);
+			status = option_n(&i, ac, av);
 		else
-			ok = option_other(av[i]);
-		if (!ok)
+			status = option_other(av[i]);
+		if (!status)
 		{
 			print_usage();
 			return (0);
