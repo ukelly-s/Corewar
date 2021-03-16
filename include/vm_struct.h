@@ -46,14 +46,12 @@ typedef struct			s_cursor
 	int					live_cycle;
 	int					cycles_to_exec;
 	int					live_nbr;
-	t_byte				mark;
 }						t_cursor;
 
 typedef struct			s_vm
 {
 	unsigned			config;
 	t_byte				arena[MEM_SIZE];
-	t_byte				marks[MEM_SIZE];
 	t_champ				*champ[MAX_PLAYERS];
 	size_t				champ_size;
 	t_list				*cursors;

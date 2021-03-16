@@ -38,7 +38,6 @@ void				op_st(t_cursor *cursor)
 	{
 		addr_trunc = addr % IDX_MOD;
 		vm_store_mem(value, addr_trunc + cursor->pc, REG_SIZE);
-		vm_mark_mem(cursor->mark, addr_trunc + cursor->pc, REG_SIZE);
 		log_debug(__func__, "Cursor %d: exec 'st': r%d (%d) -> %d (%P)",
 			cursor->id, reg_0_id, value, addr_trunc,
 			vm_trunc(addr_trunc + cursor->pc));

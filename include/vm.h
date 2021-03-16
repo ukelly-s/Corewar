@@ -39,7 +39,6 @@ enum					e_vm_flags
 	VM_DUMP = (1U << 5),
 	VM_STEP_DUMP = (1U << 6),
 	VM_AFF = (1U << 7),
-	VM_COLOR = (1U << 8)
 };
 
 t_vm					g_vm;
@@ -55,7 +54,6 @@ void		vm_cursor_move(t_cursor *cursor);
 intptr_t	vm_trunc(intptr_t addr);
 int32_t		vm_load_mem(intptr_t addr, size_t size);
 void		vm_store_mem(int32_t val, intptr_t addr, size_t size);
-void		vm_mark_mem(t_byte mark, intptr_t addr, size_t size);
 char		*vm_show_mem(intptr_t addr, char *buf, size_t size);
 
 void		vm_exec(t_cursor *cursor);

@@ -35,7 +35,6 @@ void				op_sti(t_cursor *cursor)
 	res = arg_1 + arg_2;
 	addr = cursor->pc + res % IDX_MOD;
 	vm_store_mem(arg_0, addr, REG_SIZE);
-	vm_mark_mem(cursor->mark, addr, REG_SIZE);
 	log_debug(__func__, "Cursor %d: exec 'sti': %s -> %s + %s = %d (%P)",
 		cursor->id, g_arg_log[0], g_arg_log[1], g_arg_log[2], res, addr);
 	if (g_vm.config & VM_VERBOSE_OP)

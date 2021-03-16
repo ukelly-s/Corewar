@@ -42,23 +42,6 @@ intptr_t	vm_trunc(intptr_t addr)
 	return (addr);
 }
 
-void		vm_mark_mem(t_byte mark, intptr_t addr, size_t size)
-{
-	size_t	tail_size;
-	size_t	head_size;
-
-	addr = vm_trunc(addr);
-	if (addr + size <= MEM_SIZE)
-		ft_memset(&g_vm.marks[addr], mark, size);
-	else
-	{
-		tail_size = MEM_SIZE - addr;
-		head_size = addr + size - MEM_SIZE;
-		ft_memset(&g_vm.marks[addr], mark, tail_size);
-		ft_memset(&g_vm.marks[0], mark, head_size);
-	}
-}
-
 void		vm_store_mem(int32_t val, intptr_t addr, size_t size)
 {
 	size_t	tail_size;
