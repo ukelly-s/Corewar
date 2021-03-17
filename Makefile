@@ -57,7 +57,6 @@ SRCS_VM_VM += vm/vm_options_logger.c
 SRCS_VM_VM += vm/vm_cursor.c
 SRCS_VM_VM += vm/vm_exec.c
 SRCS_VM_VM += vm/vm_memory_access.c
-SRCS_VM_VM += vm/vm_verbose.c
 SRCS_VM_VM += vm/vm_check.c
 
 SRCS_VM_OP = op/op_live.c
